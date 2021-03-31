@@ -6,6 +6,8 @@ import com.project.upgrade.userformvalidation.model.User;
 import com.project.upgrade.userformvalidation.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -15,5 +17,6 @@ public class UserService {
 
         userRepository.registerUser(newUser);
     }
+
 
 }

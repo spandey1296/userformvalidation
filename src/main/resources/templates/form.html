@@ -1,56 +1,74 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <title>ST3-Mini Project</title>
+    <link th:rel="stylesheet" th:href="@{/templates/style.css}" />
+
 </head>
+
 <body>
-<div id="whole">
-    <h2>Details Form </h2>
 
+<div id="parent">
+    <p id="heading">Details form</p>
 
+    <div id="view">
+        <form name="myform" method="post" th:object="${user}" th:action="@{/users/registration}">
+            <table>
+                <tr>
+                    <td><label for="Name">Name:</label></td>
+                    <td><input type="text" id="Name" name="name" minlength="3" th:field="${user.fullName}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="mob_no">Mob.no:</label></td>
+                    <td>
+                        <input type="text" id="mob_no" name="mob_no" minlength="10" th:field= "${user.mobileNumber}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email Id:</label></td>
+                    <td><input type="email" id="email" name="email" th:field="${user.email}" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit" onclick="ADDuser()" class="btn" />
+                    </td>
+                </tr>
 
-    <hr id="hr1" style="height:1px;border-width:0;color:black;background-color:black">
+            </table>
+        </form>
+        <form method="post" th:action="@{'/posts'}" th:object="${post}">
 
-    <div id="my-form">
-        <form name="form" id="form1">
-            <label>Name: </label> <input type="text" id="name" placeholder="Enter your name">
-            <br />
-            <br />
-            <br />
-
-
-
-            <label>Mob. No. :</label> <input type="number" id="phone" placeholder="Enter your mob no.">
-            <br />
-            <br />
-            <br />
-            <label>Email ID: </label> <input type="email" id="email" placeholder="Enter your mail id">
-            <br />
-            <br />
-            <br />
-
-            <input type="button" class="button" value="Submit" onclick="displayValue()">
+            <table>
+                <tr>
+                    <td>
+                        <input class="form-control"  type="text" th:field="${post.name}"/>
+                    </td>
+                    <td>
+                        <input  type="button" value="Search" class="search">
+                    </td>
+                </tr>
+            </table>
         </form>
     </div>
-    <br />
 
-    <hr id="hr2" style="height:2px;border-width:0;color:black;background-color:black" />
+    <div>
+
+        <div id="result_div">
+            <table id="result_table">
+                <tr>
+                    <td>Name:</td>
+                    <td>Mob No:</td>
+                    <td>Email:</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
 </div>
-<div id=disout>
-    <table id="list" cellspacing= "5px" cellpadding="30px">
-        <thead>
 
-        <tr>
-            <td>Name</td>
-            <td>Mobile no</td>
-            <td>Email ID</td>
-        </tr>
-</div>
-
-<script type="text/javascript" src="index.js"></script>
 </body>
+<script th:src="@{/templates/index.js}"></script>
+
 </html>

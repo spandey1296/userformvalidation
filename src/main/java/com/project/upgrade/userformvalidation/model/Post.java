@@ -2,8 +2,8 @@ package com.project.upgrade.userformvalidation.model;
 
 import javax.persistence.Column;
 
-class post
-{
+public class Post {
+
     public String getName() {
         return name;
     }
@@ -14,4 +14,8 @@ class post
 
     @Column(name = "name")
     private String name;
+
+
+
+
 }

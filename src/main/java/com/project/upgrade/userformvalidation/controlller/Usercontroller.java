@@ -1,6 +1,7 @@
 package com.project.upgrade.userformvalidation.controlller;
 
 
+import com.project.upgrade.userformvalidation.model.Post;
 import com.project.upgrade.userformvalidation.model.User;
 import com.project.upgrade.userformvalidation.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 
 @Controller
-
-public class Usercontroller {
-
+public class UserController {
 
     @Autowired
     private UserService userService;
@@ -35,10 +36,9 @@ public class Usercontroller {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/posts")
-    public String getUserPost( post x,Model model) {
-        List<User> posts =  userService.m(x.getName());
-        model.addAttribute("posts", posts);
-        return "posts";
+    public String getUserPost( Model model) {
+        model.addAttribute("posts",index);
+        return "index";
     }
 
 
